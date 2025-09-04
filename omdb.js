@@ -18,7 +18,9 @@ function procurarFilme(e){
                 .then( resp => resp.json())
                 .then( data => {
                     console.log(data)
-                    
+                if(data.Response == 'False'){
+                    console.log("Filme não encontrado")
+                }
                 const ratings = data.Ratings[0] && data.Ratings[1] ? data.Ratings[1].Value : '-'
                 
                       filmes.innerHTML += `
@@ -29,7 +31,7 @@ function procurarFilme(e){
             <div class="nota">
                 <h1>${data.Title}</h1>
                 <img src='imgs/imdb.png' class='imdbIcon'><span class='score'>${data.imdbRating}</span>
-                <img src='imgs/tomato.png' class='tomatoIcon'><span class='score'>${ratings}</span>
+                <img src='imgs/tomato.png' class='tomatoIcon'><span class='score'><strong>${ratings}</strong></span>
 
               </div>  
             

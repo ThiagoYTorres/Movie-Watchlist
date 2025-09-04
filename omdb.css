@@ -9,9 +9,31 @@
 }
 .procurar{
     margin-top: 20px;
+    display: flex;
+    align-content: center;
+    margin-bottom: 30px;
 }
 .movie{
-    margin-bottom: 30px;
+    padding: 10px;
+    width: 400px;
+    border-radius: 5px 0px 0px 5px;
+    border-color: 0.1px rgb(171, 171, 171);
+    border-style: solid;
+}
+.search{
+    padding: 10px 20px;
+    border-radius: 0px 5px 5px 0px;
+    font-weight: 700;
+    border: solid rgb(171, 171, 171) 0.1px;
+    background-color: rgb(226, 226, 226);
+    color: rgb(75, 75, 75);
+    font-size: 1rem;
+    transition: 0.2s;
+}
+.search:hover{
+    background-color: rgb(41, 41, 41);
+    cursor: pointer;
+    color: rgb(226, 226, 226);
 }
 .filmeCard{
     display: flex;
@@ -25,10 +47,10 @@
 }
 @keyframes slideDown {
       from {
-        transform: translateY(-100%); /* Elemento começa fora da tela, acima */
+        transform: translateY(-100%);
       }
       to {
-        transform: translateY(0);     /* Elemento desliza para a posição final */
+        transform: translateY(0);     
       }
     }
 .carac{
