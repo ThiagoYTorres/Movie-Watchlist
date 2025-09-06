@@ -18,14 +18,20 @@ function procurarFilme(e){
                 .then( resp => resp.json())
                 .then( data => {
                     console.log(data)
-                if(data.Response == 'False'){
-                    console.log("Filme não encontrado")
-                }
-                const ratings = data.Ratings[0] && data.Ratings[1] ? data.Ratings[1].Value : '-'
+                    console.log(data.Response)
+                try {
+                    const response = data;
+                    // Lógica para processar a resposta se for bem-sucedida
+                    } catch (error) {
+                    // Lógica para tratar o erro
+                    console.error('Ocorreu um erro:', error);
+}    
+                const poster = data.Poster == 'N/A' ? 'imgs/notfound.png' : data.Poster
+                const ratings = data.Ratings[0] && data.Ratings[1] ? data.Ratings[1].Value : '--'
                 
                       filmes.innerHTML += `
     <div class="filmeCard">
-        <img src=${data.Poster} class="poster">
+        <img src=${poster} class="poster">
          
         <div class="carac">
             <div class="nota">
