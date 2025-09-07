@@ -26,7 +26,7 @@
     padding-top: 10px;
     margin-bottom: 100px;
     color: aliceblue;
-    
+    text-shadow: 1px 2px 5px #d6d6d6;
 }
 .procurar{
     margin-top: 20px;
@@ -35,11 +35,12 @@
     margin-bottom: 30px;
 }
 .movie{
-    padding: 5px;
+    padding: 10px;
     font-size: 1.3rem;
     width: 600px;
     border-radius: 5px 0px 0px 5px;
-    border-color: 0.1px rgb(171, 171, 171);
+    border: 0.1px;
+    border-color: rgb(171, 171, 171);
     border-style: solid;
     
 }
@@ -125,4 +126,6 @@
      font-weight: 600;
 }
 
-
+input:focus {   
+    outline: 0.1px;
+}
