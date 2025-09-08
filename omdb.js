@@ -2,13 +2,13 @@ const filme = document.querySelector('.movie')
 const procurar = document.querySelector('.search')
 const filmes = document.querySelector('.filmes')
 
-const key = '72d93772'
+const key = 'Sua Chave Aqui'
 procurar.addEventListener('click', procurarFilme)
 
 function procurarFilme(e){
     e.preventDefault()
     filmes.innerHTML = ''
-    fetch(`http://www.omdbapi.com/?apikey=${key}&s=${filme.value}&page=1&type=series`)
+    fetch(`http://www.omdbapi.com/?apikey=${key}&s=${filme.value}&page=1&type=movie`)
     .then( resp => resp.json())
     .then( data => {
         console.log(data)
@@ -18,12 +18,12 @@ function procurarFilme(e){
                 .then( resp => resp.json())
                 .then( data => {
                     console.log(data)
-                    if(!data.Response == true){
-                        console.log('erro filme not finded')
-                    }
+                    console.log(data.totalResults)
+                    
             
                 const poster = data.Poster == 'N/A' ? 'imgs/notfound.png' : data.Poster
                 const ratings = data.Ratings[0] && data.Ratings[1] ? data.Ratings[1].Value : '--'
+                
                 
                       filmes.innerHTML += `
     <div class="filmeCard">
@@ -33,7 +33,7 @@ function procurarFilme(e){
             <div class="nota">
                 <h1>${data.Title}</h1>
                 <img src='imgs/imdb.png' class='imdbIcon'><span class='score'>${data.imdbRating}</span>
-                <img src='imgs/tomato.png' class='tomatoIcon'><span class='score'><strong>${ratings}</strong></span>
+                <img src='imgs/tomato.png' class='tomatoIcon'><span class='score'>${ratings}</span>
 
               </div>  
             
@@ -54,5 +54,14 @@ function procurarFilme(e){
       
         
         
+    })
+    .catch ( erro => {
+        filmes.innerHTML += `
+    <div class='erro'>
+        <img src='imgs/tira.png'/>
+        <h1>Filme não encontrado, tente buscar por outro filme</h1>
+    </div>    
+        `
+    
     })
 }   
